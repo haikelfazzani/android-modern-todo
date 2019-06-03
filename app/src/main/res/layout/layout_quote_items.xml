@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="10dp"
+    android:layout_marginBottom="10dp">
+
+    <TextView
+        android:id="@+id/txtTextQuote"
+        android:layout_width="360dp"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/txtTitle"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="30dp"
+        android:hint="New York Public Radio" />
+
+    <TextView
+        android:id="@+id/txtAuthor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Engineering Manager, DevOps"
+        android:textColor="@android:color/black"
+        android:textColorHint="@android:color/black"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+</RelativeLayout>
