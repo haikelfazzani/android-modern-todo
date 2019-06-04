@@ -22,7 +22,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.TodoForm" />
-        <activity android:name=".activity.TodoForm$ListTodoActivity" />
+        <activity android:name=".activity.ListTodoActivity" />
         <activity android:name=".activity.QuoteActivity" />
         <activity android:name=".activity.SignActivity" />
         <activity android:name=".activity.LoginActivity" />

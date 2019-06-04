@@ -20,6 +20,8 @@ import com.example.haike.mytodolist.R;
 import com.example.haike.mytodolist.config.DbChrono;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 public class TimerActivity extends AppCompatActivity implements View.OnClickListener {
@@ -63,6 +65,7 @@ public class TimerActivity extends AppCompatActivity implements View.OnClickList
         List<String> stringList = dbChrono.getAllTimers();
 
         if(stringList.size() > 0) {
+            Collections.reverse(stringList);
             adapter = new ArrayAdapter<>(TimerActivity.this,
                     android.R.layout.simple_list_item_1, stringList);
             listView.setAdapter(adapter);
@@ -144,8 +147,6 @@ public class TimerActivity extends AppCompatActivity implements View.OnClickList
                             public void onClick(DialogInterface dialog, int which) {
                                 dbChrono.openDB();
                                 dbChrono.deleteAll();
-                                adapter.clear();
-                                listView.invalidate();
                                 dbChrono.closeDB();
                             }
                         })
