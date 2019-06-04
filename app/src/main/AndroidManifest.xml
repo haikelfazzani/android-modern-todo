@@ -21,13 +21,20 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.TodoForm" android:parentActivityName=".activity.ListTodoActivity"/>
+        <activity
+            android:name=".activity.TodoForm"
+            android:parentActivityName=".activity.ListTodoActivity" />
         <activity android:name=".activity.ListTodoActivity" />
-        <activity android:name=".activity.QuoteActivity" android:parentActivityName=".activity.ListTodoActivity" />
+        <activity
+            android:name=".activity.QuoteActivity"
+            android:parentActivityName=".activity.ListTodoActivity" />
         <activity android:name=".activity.SignActivity" />
         <activity android:name=".activity.LoginActivity" />
         <activity android:name=".activity.QuotePreviewActivity" />
-        <activity android:name=".activity.TimerActivity" android:parentActivityName=".activity.ListTodoActivity"/>
+        <activity
+            android:name=".activity.TimerActivity"
+            android:parentActivityName=".activity.ListTodoActivity" />
+        <activity android:name=".activity.TodoPreviewActivity" android:parentActivityName=".activity.ListTodoActivity"/>
     </application>
 
 </manifest>

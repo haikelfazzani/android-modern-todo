@@ -3,6 +3,7 @@ package com.example.haike.mytodolist.adapter;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -14,6 +15,7 @@ import android.widget.Toast;
 
 import com.example.haike.mytodolist.R;
 import com.example.haike.mytodolist.activity.TodoForm;
+import com.example.haike.mytodolist.activity.TodoPreviewActivity;
 import com.example.haike.mytodolist.config.DbHandler;
 import com.example.haike.mytodolist.model.Todo;
 
@@ -45,6 +47,19 @@ public class TodoAdapter extends RecyclerView.Adapter<TodoAdapter.MyViewHolder> 
         myViewHolder.desc.setText(todo.getDesc());
         myViewHolder.date.setText(todo.getDate());
         myViewHolder.time.setText(todo.getTime());
+
+        myViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, TodoPreviewActivity.class);
+                intent.putExtra("todo-id", todo.getId()+"");
+                intent.putExtra("todo-title", todo.getTitle());
+                intent.putExtra("todo-desc", todo.getDesc());
+                intent.putExtra("todo-date", todo.getDate());
+                intent.putExtra("todo-time", todo.getTime());
+                context.startActivity(intent);
+            }
+        });
 
         myViewHolder.btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override

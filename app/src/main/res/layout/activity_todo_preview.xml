@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.TodoPreviewActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerVertical="true"
+        android:gravity="center"
+        android:padding="50dp">
+
+        <ImageView
+            android:layout_width="99dp"
+            android:layout_height="83dp"
+            android:src="@drawable/ic_update_black_24dp" />
+
+        <EditText
+            android:id="@+id/todoTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:hint="todo title" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/todoDesc"
+            android:hint="todo description"/>
+
+
+            <EditText
+                android:id="@+id/todoTime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="07h" />
+
+            <EditText
+                android:id="@+id/todoDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="06-07-2019" />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="MODIFIER"
+            android:id="@+id/btnUpdate"
+            android:textColor="#fff"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

@@ -90,13 +90,17 @@ public class DbHandler extends SQLiteOpenHelper {
         return todoList;
     }
 
-    /*public void updateContact(Todo contact) {
+    public void updateTodo(Todo todo) {
         myDB = this.getWritableDatabase();
-        String sql = "UPDATE "+TABLE_NAME+" SET "+KEY_TEL +" = ? WHERE " +KEY_NAME +" = ?";
-        Cursor cursor = myDB.rawQuery(sql,
-                new String[]{contact.getTel(), contact.getName()});
-        cursor.moveToFirst();
-    }*/
+
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(KEY_TITLE, todo.getTitle());
+        contentValues.put(KEY_DESC, todo.getDesc());
+
+        myDB.update(TABLE_NAME, contentValues, " id = "+ todo.getId(), null);
+
+
+    }
 
     public void deleteTodo(int id) {
         myDB = this.getWritableDatabase();
