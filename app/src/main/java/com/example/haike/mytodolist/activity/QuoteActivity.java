@@ -32,6 +32,10 @@ public class QuoteActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        toolbar.setTitle("Liste des citations");
+
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         recyclerView = findViewById(R.id.rec_quote);
 
@@ -64,30 +68,12 @@ public class QuoteActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_empty, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-
-        int id = item.getItemId();
-
-        if (id == R.id.btnAdd) {
-            Intent intent = new Intent(QuoteActivity.this, TodoForm.class);
-            startActivity(intent);
-            return true;
-        }
-        if (id == R.id.btnQuotess) {
-            Intent intent = new Intent(QuoteActivity.this, QuoteActivity.class);
-            startActivity(intent);
-            return true;
-        }
-        if (id == R.id.btnTimer) {
-            Intent intent = new Intent(QuoteActivity.this, TimerActivity.class);
-            startActivity(intent);
-            return true;
-        }
 
         return super.onOptionsItemSelected(item);
     }

@@ -4,22 +4,36 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.TodoForm$ListTodoActivity"
-    android:paddingRight="50dp"
-    android:paddingLeft="50dp">
+    tools:context=".activity.SignActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+    </android.support.design.widget.AppBarLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_centerVertical="true">
+        android:layout_centerVertical="true"
+        android:paddingRight="50dp"
+        android:paddingLeft="50dp">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="15dp"
             android:fontFamily="cursive"
-            android:gravity="center"
+            android:layout_gravity="center"
             android:text="Inscription"
             android:textAlignment="center"
             android:textSize="30sp"
@@ -28,24 +42,28 @@
         <android.support.design.widget.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:hint="Nom"
             android:id="@+id/nom"/>
 
         <android.support.design.widget.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:hint="Prenom"
             android:id="@+id/prenom"/>
 
         <android.support.design.widget.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:hint="Email"
             android:id="@+id/email"/>
 
         <android.support.design.widget.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:hint="Password"
             android:inputType="textPassword"
             android:id="@+id/password"/>
@@ -53,12 +71,14 @@
         <android.support.design.widget.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:hint="Ville"
             android:id="@+id/ville"/>
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:layout_marginTop="15dp"
             android:textColor="#fff"
             android:textSize="20sp"

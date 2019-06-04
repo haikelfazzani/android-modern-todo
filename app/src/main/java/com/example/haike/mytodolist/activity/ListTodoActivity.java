@@ -29,6 +29,8 @@ public class ListTodoActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        toolbar.setTitle("Liste des todos");
+
         recyclerView = findViewById(R.id.todo_rec);
 
         dbHandler = new DbHandler(ListTodoActivity.this);

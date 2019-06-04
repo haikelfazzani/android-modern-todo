@@ -2,6 +2,7 @@ package com.example.haike.mytodolist.activity;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,6 +15,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.haike.mytodolist.R;
@@ -30,8 +33,10 @@ public class TodoForm extends AppCompatActivity implements View.OnClickListener 
 
     private DbHandler dbHandler;
 
+    private RelativeLayout relativeLayout;
     private ImageView imgList;
-    private TextInputEditText txtTitre, txtDesc, txtDate, txtTime;
+    private TextInputEditText txtTitre, txtDesc, txtDate;
+    private Spinner txtTime;
     private Button btnAjouter;
 
     private Calendar myCalendar = Calendar.getInstance();
@@ -42,6 +47,7 @@ public class TodoForm extends AppCompatActivity implements View.OnClickListener 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_todo_form);
 
+        relativeLayout = findViewById(R.id.layoutTodoForm);
         txtTitre = findViewById(R.id.txtTitre);
         txtDesc = findViewById(R.id.txtDesc);
         txtDate = findViewById(R.id.txtDate);
@@ -82,11 +88,11 @@ public class TodoForm extends AppCompatActivity implements View.OnClickListener 
         String myTxtTitre = txtTitre.getText().toString();
         String myTxtDesc = txtDesc.getText().toString();
         String myTxtDate = txtDate.getText().toString();
-        String myTxtTime = txtTime.getText().toString();
+        String myTxtTime = txtTime.getSelectedItem().toString();
 
         switch (v.getId()) {
             case R.id.btnAjouter:
-                if(validateInput(myTxtTitre) && validateInput(myTxtDesc) && (validInteger(myTxtTime))) {
+                if(validateInput(myTxtTitre) && validateInput(myTxtDesc) ) {
                     dbHandler = new DbHandler(TodoForm.this);
                     dbHandler.openDB();
 
@@ -94,7 +100,7 @@ public class TodoForm extends AppCompatActivity implements View.OnClickListener 
                     todo.setTitle(myTxtTitre);
                     todo.setDesc(myTxtDesc);
                     todo.setDate(myTxtDate);
-                    todo.setTime(addZeroToBegin(myTxtTime) + " h");
+                    todo.setTime(myTxtTime);
 
                     dbHandler.addTodo(todo);
                     dbHandler.closeDB();
@@ -103,8 +109,13 @@ public class TodoForm extends AppCompatActivity implements View.OnClickListener 
                     redirectToList();
                 }
                 else {
-                    Toast.makeText(TodoForm.this, "il faut remplir tous les champs !",
-                            Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(TodoForm.this, "il faut remplir tous les champs !",
+                      //      Toast.LENGTH_SHORT).show();
+                    Snackbar snackbar = Snackbar
+                            .make(relativeLayout, "il faut remplir tous les champs !", Snackbar.LENGTH_LONG);
+                    View snackbarView = snackbar.getView();
+                    snackbarView.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
+                    snackbar.show();
                 }
                 break;
 
@@ -122,10 +133,6 @@ public class TodoForm extends AppCompatActivity implements View.OnClickListener 
         }
     }
 
-    private String addZeroToBegin(String input) {
-        return Integer.parseInt(input.trim()) < 10 ? "0"+input : input;
-    }
-
     private boolean validInteger(String input) {
         return input.matches("\\d+");
     }
@@ -134,7 +141,6 @@ public class TodoForm extends AppCompatActivity implements View.OnClickListener 
         txtTitre.setText("");
         txtDesc.setText("");
         txtDate.setText("");
-        txtTime.setText("");
     }
 
     public void redirectToList() {

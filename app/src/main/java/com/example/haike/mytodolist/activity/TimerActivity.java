@@ -43,6 +43,10 @@ public class TimerActivity extends AppCompatActivity implements View.OnClickList
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        toolbar.setTitle("Chronometer");
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         dbChrono = new DbChrono(TimerActivity.this);
 
@@ -77,7 +81,7 @@ public class TimerActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_timer, menu);
         return true;
     }
 
@@ -86,19 +90,8 @@ public class TimerActivity extends AppCompatActivity implements View.OnClickList
 
         int id = item.getItemId();
 
-        if (id == R.id.btnAdd) {
-            Intent intent = new Intent(TimerActivity.this, TodoForm.class);
-            startActivity(intent);
-            return true;
-        }
-        if (id == R.id.btnQuotess) {
-            Intent intent = new Intent(TimerActivity.this, QuoteActivity.class);
-            startActivity(intent);
-            return true;
-        }
-        if (id == R.id.btnTimer) {
-            Intent intent = new Intent(TimerActivity.this, TimerActivity.class);
-            startActivity(intent);
+        if (id == R.id.homeAsUp) {
+            finish();
             return true;
         }
 
@@ -121,6 +114,7 @@ public class TimerActivity extends AppCompatActivity implements View.OnClickList
                 if(running) {
                     chronometer.stop();
                     pauseOffset = SystemClock.elapsedRealtime() - chronometer.getBase();
+                    dbChrono.closeDB();
                     running = false;
                 }
                 break;

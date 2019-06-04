@@ -23,9 +23,12 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="0dp"
         android:layout_marginTop="10dp"
+        android:layout_marginBottom="28dp"
+        android:orientation="vertical"
         android:paddingLeft="20dp"
         android:paddingRight="20dp">
 
@@ -33,8 +36,7 @@
             android:layout_width="195dp"
             android:layout_height="90dp"
             android:layout_gravity="center"
-            android:src="@drawable/ttt"
-            />
+            android:src="@drawable/ttt" />
 
         <Chronometer
             android:id="@+id/txtTimer"
@@ -49,55 +51,55 @@
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_gravity="center">
+            android:layout_gravity="center"
+            android:orientation="horizontal">
 
             <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:background="#fff"
                 android:id="@+id/btnStart"
-                android:text="START"/>
-
-            <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:background="#fff"
                 android:gravity="center"
+                android:text="START" />
+
+            <Button
                 android:id="@+id/btnStop"
-                android:text="STOP"/>
-
-            <Button
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:background="#fff"
                 android:gravity="center"
+                android:text="STOP" />
+
+            <Button
                 android:id="@+id/btnReset"
-                android:text="RESET"/>
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="#fff"
+                android:gravity="center"
+                android:text="RESET" />
 
         </LinearLayout>
 
         <ListView
             android:id="@+id/listTimers"
             android:layout_width="match_parent"
-            android:layout_height="259dp"
-            android:layout_marginTop="10dp">
+            android:layout_height="184dp"
+            android:layout_marginTop="30dp">
 
         </ListView>
 
         <Button
+            android:id="@+id/btnClear"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:background="@color/colorPrimary"
-            android:textColor="#fff"
             android:gravity="center"
-            android:id="@+id/btnClear"
-            android:text="CLEAR DATA"/>
+            android:text="CLEAR DATA"
+            android:textColor="#fff" />
 
     </LinearLayout>
 
