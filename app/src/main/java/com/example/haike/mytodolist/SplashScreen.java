@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.example.haike.mytodolist.activity.SignActivity;
 import com.example.haike.mytodolist.activity.TodoForm;
 import com.example.haike.mytodolist.api.QuoteApi;
 import com.example.haike.mytodolist.model.Quote;
@@ -69,7 +70,7 @@ public class SplashScreen extends AppCompatActivity {
             Thread.sleep(1000);
             progressBar.setProgress(i);
             if(i >= 100) {
-                Intent intent = new Intent(SplashScreen.this, MainActivity.class);
+                Intent intent = new Intent(SplashScreen.this, SignActivity.class);
                 startActivity(intent);
                 finish();
             }

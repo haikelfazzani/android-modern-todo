@@ -1,4 +1,4 @@
-package com.example.haike.mytodolist;
+package com.example.haike.mytodolist.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,14 +9,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.example.haike.mytodolist.activity.QuoteActivity;
-import com.example.haike.mytodolist.activity.TodoForm;
+import com.example.haike.mytodolist.R;
 import com.example.haike.mytodolist.adapter.TodoAdapter;
 import com.example.haike.mytodolist.config.DbHandler;
 import com.example.haike.mytodolist.model.Todo;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class ListTodoActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private DbHandler dbHandler;
@@ -31,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.todo_rec);
 
-        dbHandler = new DbHandler(MainActivity.this);
+        dbHandler = new DbHandler(ListTodoActivity.this);
 
         dbHandler.openDB();
 
@@ -39,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Recycle settings
         recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));
-        TodoAdapter adapter = new TodoAdapter(MainActivity.this, todoList);
+        TodoAdapter adapter = new TodoAdapter(ListTodoActivity.this, todoList);
         recyclerView.setAdapter(adapter);
 
 
@@ -57,12 +56,12 @@ public class MainActivity extends AppCompatActivity {
         int id = item.getItemId();
 
         if (id == R.id.btnAdd) {
-            Intent intent = new Intent(MainActivity.this, TodoForm.class);
+            Intent intent = new Intent(ListTodoActivity.this, TodoForm.class);
             startActivity(intent);
             return true;
         }
         if (id == R.id.btnQuotess) {
-            Intent intent = new Intent(MainActivity.this, QuoteActivity.class);
+            Intent intent = new Intent(ListTodoActivity.this, QuoteActivity.class);
             startActivity(intent);
             return true;
         }

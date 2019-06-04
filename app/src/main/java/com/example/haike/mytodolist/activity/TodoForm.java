@@ -11,7 +11,6 @@ import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.example.haike.mytodolist.MainActivity;
 import com.example.haike.mytodolist.R;
 import com.example.haike.mytodolist.config.DbHandler;
 import com.example.haike.mytodolist.model.Todo;
@@ -110,7 +109,7 @@ public class TodoForm extends AppCompatActivity implements View.OnClickListener 
                 break;
 
             case R.id.imgList:
-                Intent intent = new Intent(TodoForm.this, MainActivity.class);
+                Intent intent = new Intent(TodoForm.this, ListTodoActivity.class);
                 startActivity(intent);
                 break;
         }
@@ -128,7 +127,7 @@ public class TodoForm extends AppCompatActivity implements View.OnClickListener 
     }
 
     public void redirectToList() {
-        Intent intent = new Intent(TodoForm.this, MainActivity.class);
+        Intent intent = new Intent(TodoForm.this, ListTodoActivity.class);
         startActivity(intent);
     }
 }

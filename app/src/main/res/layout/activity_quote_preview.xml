@@ -4,54 +4,56 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SplashScreen">
+    tools:context=".activity.QuotePreviewActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_centerVertical="true"
-        >
+        android:layout_centerVertical="true">
 
         <ImageView
-            android:layout_width="190dp"
-            android:layout_height="170dp"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/quote"
             android:layout_gravity="center"
-            android:src="@drawable/vendre"
-            android:layout_marginBottom="40dp"/>
+            android:layout_marginBottom="20dp"
+            />
 
         <TextView
-            android:id="@+id/txtSplashText"
-            android:layout_width="match_parent"
+            android:id="@+id/txtQuoteText"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center"
-            android:text="TextView"
+            android:hint="text quote here"
+            android:textColor="@android:color/black"
             android:textSize="18sp"
             android:textStyle="bold"
-            android:layout_marginBottom="5dp"
+            android:paddingRight="20dp"
             android:paddingLeft="20dp"
-            android:paddingRight="20dp"/>
+            android:layout_marginBottom="10dp"/>
 
         <TextView
-            android:id="@+id/txtSplashAuthor"
-            android:layout_width="match_parent"
+            android:id="@+id/txtQuoteAuthor"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:fontFamily="cursive"
             android:gravity="center"
-            android:text="TextView"
-            android:layout_marginBottom="10dp"/>
+            android:hint="author name"
+            android:layout_marginBottom="50dp"/>
 
-        <ProgressBar
-            android:id="@+id/progressBar"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="200dp"
+        <Button
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:padding="10dp"/>
+            android:gravity="center"
+            android:id="@+id/btnRetour"
+            android:background="#fff"
+            android:textColor="@color/colorPrimary"
+            android:text="retour"/>
 
     </LinearLayout>
-
 
 </RelativeLayout>

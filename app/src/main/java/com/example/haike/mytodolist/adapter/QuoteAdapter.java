@@ -1,6 +1,7 @@
 package com.example.haike.mytodolist.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -9,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.haike.mytodolist.R;
+import com.example.haike.mytodolist.activity.QuotePreviewActivity;
 import com.example.haike.mytodolist.model.Quote;
 
 import java.util.List;
@@ -35,6 +37,16 @@ public class QuoteAdapter extends RecyclerView.Adapter<QuoteAdapter.MyViewHolder
         final Quote quote = this.mDataset.get(position);
         myViewHolder.txtQuote.setText(quote.getTextQuote());
         myViewHolder.author.setText(quote.getAuthor());
+
+        myViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, QuotePreviewActivity.class);
+                intent.putExtra("text-quote", quote.getTextQuote());
+                intent.putExtra("author-quote", quote.getAuthor());
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override

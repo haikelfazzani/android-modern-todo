@@ -5,7 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class UserApi {
 
-    private static final String BASE_URL = "https://jsonplaceholder.typicode.com/";
+    private static final String BASE_URL = "https://android-server-doctor.herokuapp.com/api/";
     private static UserApi userApi;
     private Retrofit retrofit;
 
