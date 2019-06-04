@@ -94,7 +94,7 @@ public class TodoForm extends AppCompatActivity implements View.OnClickListener 
                     todo.setTitle(myTxtTitre);
                     todo.setDesc(myTxtDesc);
                     todo.setDate(myTxtDate);
-                    todo.setTime(addZeroToBegin(myTxtTime + " h"));
+                    todo.setTime(addZeroToBegin(myTxtTime) + " h");
 
                     dbHandler.addTodo(todo);
                     dbHandler.closeDB();
@@ -123,7 +123,7 @@ public class TodoForm extends AppCompatActivity implements View.OnClickListener 
     }
 
     private String addZeroToBegin(String input) {
-        return Integer.parseInt(input) < 10 ? "0"+input : input;
+        return Integer.parseInt(input.trim()) < 10 ? "0"+input : input;
     }
 
     private boolean validInteger(String input) {
