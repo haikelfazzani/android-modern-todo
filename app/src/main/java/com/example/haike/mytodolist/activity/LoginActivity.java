@@ -78,7 +78,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void goToRendList() {
-        Intent intent = new Intent(LoginActivity.this, ListTodoActivity.class);
+        Intent intent = new Intent(LoginActivity.this, TodoForm.ListTodoActivity.class);
         startActivity(intent);
     }
 

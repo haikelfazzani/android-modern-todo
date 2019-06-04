@@ -1,7 +1,13 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.example.haike.mytodolist.activity.ListTodoActivity">
+    tools:context="com.example.haike.mytodolist.activity.TodoForm$ListTodoActivity">
+
+    <item
+        android:title="Timer"
+        android:id="@+id/btnTimer"
+        app:showAsAction="never"
+        android:icon="@drawable/ic_timer_black_24dp"/>
 
     <item
         android:title="ajouter une todo"
@@ -10,7 +16,7 @@
         android:icon="@drawable/ic_add_black_24dp"/>
 
     <item
-        android:title="quotes"
+        android:title="Quotes"
         android:id="@+id/btnQuotess"
         app:showAsAction="always"
         android:icon="@drawable/ic_message_black_24dp"/>

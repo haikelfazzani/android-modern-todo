@@ -5,6 +5,11 @@ import android.content.Intent;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -12,11 +17,13 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.haike.mytodolist.R;
+import com.example.haike.mytodolist.adapter.TodoAdapter;
 import com.example.haike.mytodolist.config.DbHandler;
 import com.example.haike.mytodolist.model.Todo;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Locale;
 
 public class TodoForm extends AppCompatActivity implements View.OnClickListener {
@@ -87,7 +94,7 @@ public class TodoForm extends AppCompatActivity implements View.OnClickListener 
                     todo.setTitle(myTxtTitre);
                     todo.setDesc(myTxtDesc);
                     todo.setDate(myTxtDate);
-                    todo.setTime(myTxtTime + " h");
+                    todo.setTime(addZeroToBegin(myTxtTime + " h"));
 
                     dbHandler.addTodo(todo);
                     dbHandler.closeDB();
@@ -115,6 +122,10 @@ public class TodoForm extends AppCompatActivity implements View.OnClickListener 
         }
     }
 
+    private String addZeroToBegin(String input) {
+        return Integer.parseInt(input) < 10 ? "0"+input : input;
+    }
+
     private boolean validInteger(String input) {
         return input.matches("\\d+");
     }
@@ -129,5 +140,65 @@ public class TodoForm extends AppCompatActivity implements View.OnClickListener 
     public void redirectToList() {
         Intent intent = new Intent(TodoForm.this, ListTodoActivity.class);
         startActivity(intent);
+    }
+
+    public static class ListTodoActivity extends AppCompatActivity {
+
+        private RecyclerView recyclerView;
+        private DbHandler dbHandler;
+
+        @Override
+        protected void onCreate(Bundle savedInstanceState) {
+            super.onCreate(savedInstanceState);
+            setContentView(R.layout.activity_main);
+
+            Toolbar toolbar = findViewById(R.id.toolbar);
+            setSupportActionBar(toolbar);
+
+            recyclerView = findViewById(R.id.todo_rec);
+
+            dbHandler = new DbHandler(ListTodoActivity.this);
+
+            dbHandler.openDB();
+
+            List<Todo> todoList = dbHandler.getAllTodo();
+
+            // Recycle settings
+            recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));
+            TodoAdapter adapter = new TodoAdapter(ListTodoActivity.this, todoList);
+            recyclerView.setAdapter(adapter);
+
+
+        }
+
+        @Override
+        public boolean onCreateOptionsMenu(Menu menu) {
+            getMenuInflater().inflate(R.menu.menu_main, menu);
+            return true;
+        }
+
+        @Override
+        public boolean onOptionsItemSelected(MenuItem item) {
+
+            int id = item.getItemId();
+
+            if (id == R.id.btnAdd) {
+                Intent intent = new Intent(ListTodoActivity.this, TodoForm.class);
+                startActivity(intent);
+                return true;
+            }
+            if (id == R.id.btnQuotess) {
+                Intent intent = new Intent(ListTodoActivity.this, QuoteActivity.class);
+                startActivity(intent);
+                return true;
+            }
+            if (id == R.id.btnTimer) {
+                Intent intent = new Intent(ListTodoActivity.this, TimerActivity.class);
+                startActivity(intent);
+                return true;
+            }
+
+            return super.onOptionsItemSelected(item);
+        }
     }
 }
