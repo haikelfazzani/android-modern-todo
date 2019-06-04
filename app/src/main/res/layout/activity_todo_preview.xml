@@ -25,46 +25,86 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_centerVertical="true"
-        android:gravity="center"
         android:padding="50dp">
 
         <ImageView
-            android:layout_width="99dp"
-            android:layout_height="83dp"
+            android:layout_width="186dp"
+            android:layout_height="134dp"
+            android:layout_gravity="center"
             android:src="@drawable/ic_update_black_24dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="cursive"
+            android:text="Titre * : "
+            android:textStyle="bold" />
 
         <EditText
             android:id="@+id/todoTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="left"
-            android:hint="todo title" />
+            android:hint="todo title"
+            android:background="#e2e2e2"
+            android:padding="10dp"
+            android:layout_marginBottom="10dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="cursive"
+            android:text="Description * : "
+            android:textStyle="bold" />
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/todoDesc"
-            android:hint="todo description"/>
+            android:hint="todo description"
+            android:background="#e2e2e2"
+            android:padding="10dp"
+            android:layout_marginBottom="10dp"/>
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="cursive"
+            android:text="Choisir une date * : "
+            android:textStyle="bold" />
 
-            <EditText
-                android:id="@+id/todoTime"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="07h" />
+        <EditText
+            android:id="@+id/todoDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="06-07-2019"
+            android:background="#e2e2e2"
+            android:padding="10dp"
+            android:layout_marginBottom="10dp"/>
 
-            <EditText
-                android:id="@+id/todoDate"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="06-07-2019" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="cursive"
+            android:text="Choisir l'heure * : "
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/todoTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="07h"
+            android:background="#e2e2e2"
+            android:padding="10dp"
+            android:layout_marginBottom="10dp"/>
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="MODIFIER"
             android:id="@+id/btnUpdate"
-            android:textColor="#fff"/>
+            android:textColor="#fff"
+            />
 
     </LinearLayout>
 
