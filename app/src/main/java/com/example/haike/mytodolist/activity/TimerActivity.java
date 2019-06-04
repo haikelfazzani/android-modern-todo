@@ -122,18 +122,18 @@ public class TimerActivity extends AppCompatActivity implements View.OnClickList
                     chronometer.stop();
                     pauseOffset = SystemClock.elapsedRealtime() - chronometer.getBase();
                     running = false;
-                    String txtTimer = chronometer.getText().toString();
-
-                    dbChrono.openDB();
-                    dbChrono.addTimer(txtTimer);
-                    adapter.add(txtTimer);
-                    adapter.notifyDataSetChanged();
-                    dbChrono.closeDB();
-
                 }
                 break;
 
             case R.id.btnReset:
+                String txtTimer = chronometer.getText().toString();
+
+                dbChrono.openDB();
+                dbChrono.addTimer(txtTimer);
+                adapter.add(txtTimer);
+                adapter.notifyDataSetChanged();
+                dbChrono.closeDB();
+
                 chronometer.setBase(SystemClock.elapsedRealtime());
                 pauseOffset = 0;
                 break;
