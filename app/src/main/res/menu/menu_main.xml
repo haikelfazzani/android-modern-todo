@@ -10,6 +10,12 @@
         android:icon="@drawable/ic_timer_black_24dp"/>
 
     <item
+        android:title="Supprimer mes informations"
+        android:id="@+id/btnSupprimer"
+        app:showAsAction="never"
+        android:icon="@drawable/ic_timer_black_24dp"/>
+
+    <item
         android:title="Shop"
         android:id="@+id/btnShop"
         app:showAsAction="always"

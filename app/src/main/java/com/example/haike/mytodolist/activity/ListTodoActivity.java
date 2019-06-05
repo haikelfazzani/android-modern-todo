@@ -1,6 +1,8 @@
 package com.example.haike.mytodolist.activity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -76,6 +78,17 @@ public class ListTodoActivity extends AppCompatActivity {
         if (id == R.id.btnShop) {
             Intent intent = new Intent(ListTodoActivity.this, ShopActivity.class);
             startActivity(intent);
+            return true;
+        }
+        if (id == R.id.btnSupprimer) {
+            SharedPreferences prefs = getSharedPreferences("user_email_p", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.clear();
+            editor.commit();
+
+            Intent intent = new Intent(ListTodoActivity.this, LoginActivity.class);
+            startActivity(intent);
+
             return true;
         }
 
