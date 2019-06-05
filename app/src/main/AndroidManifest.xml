@@ -34,7 +34,10 @@
         <activity
             android:name=".activity.TimerActivity"
             android:parentActivityName=".activity.ListTodoActivity" />
-        <activity android:name=".activity.TodoPreviewActivity" android:parentActivityName=".activity.ListTodoActivity"/>
+        <activity
+            android:name=".activity.TodoPreviewActivity"
+            android:parentActivityName=".activity.ListTodoActivity" />
+        <activity android:name=".activity.ShopActivity" android:parentActivityName=".activity.ListTodoActivity"/>
     </application>
 
 </manifest>

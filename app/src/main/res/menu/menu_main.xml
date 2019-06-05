@@ -10,6 +10,12 @@
         android:icon="@drawable/ic_timer_black_24dp"/>
 
     <item
+        android:title="Shop"
+        android:id="@+id/btnShop"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_shopping_cart_black_24dp"/>
+
+    <item
         android:title="ajouter une todo"
         android:id="@+id/btnAdd"
         app:showAsAction="always"

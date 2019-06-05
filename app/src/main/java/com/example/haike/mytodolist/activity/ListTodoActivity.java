@@ -73,6 +73,11 @@ public class ListTodoActivity extends AppCompatActivity {
             startActivity(intent);
             return true;
         }
+        if (id == R.id.btnShop) {
+            Intent intent = new Intent(ListTodoActivity.this, ShopActivity.class);
+            startActivity(intent);
+            return true;
+        }
 
         return super.onOptionsItemSelected(item);
     }

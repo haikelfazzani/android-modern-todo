@@ -72,7 +72,7 @@ public class TodoForm extends AppCompatActivity implements View.OnClickListener 
 
                 String myFormat = "MM-dd-yyyy";
                 SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.FRANCE);
-                txtDate.setText(sdf.format(myCalendar.getTime()));
+                txtDate.setText(formatDate(sdf.format(myCalendar.getTime())));
             }
 
         };
@@ -99,7 +99,7 @@ public class TodoForm extends AppCompatActivity implements View.OnClickListener 
                     Todo todo = new Todo();
                     todo.setTitle(myTxtTitre);
                     todo.setDesc(myTxtDesc);
-                    todo.setDate(formatDate(myTxtDate));
+                    todo.setDate(myTxtDate);
                     todo.setTime(myTxtTime);
 
                     dbHandler.addTodo(todo);
@@ -158,6 +158,6 @@ public class TodoForm extends AppCompatActivity implements View.OnClickListener 
 
         String[] date = input.split("-");
 
-        return date[1] +" "+ list[Integer.parseInt(date[0])+1] +" "+ date[2];
+        return date[1] +" "+ list[Integer.parseInt(date[0])-1] +" "+ date[2];
     }
 }

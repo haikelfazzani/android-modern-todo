@@ -14,4 +14,5 @@ public interface IQuoteApi {
 
     @GET("quotes/rand")
     Call<Quote> getRandQuote();
+
 }
