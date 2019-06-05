@@ -96,6 +96,8 @@ public class DbHandler extends SQLiteOpenHelper {
         ContentValues contentValues = new ContentValues();
         contentValues.put(KEY_TITLE, todo.getTitle());
         contentValues.put(KEY_DESC, todo.getDesc());
+        contentValues.put(KEY_DATE, todo.getDate());
+        contentValues.put(KEY_TIME, todo.getTime());
 
         myDB.update(TABLE_NAME, contentValues, " id = "+ todo.getId(), null);
 

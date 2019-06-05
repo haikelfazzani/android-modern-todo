@@ -10,12 +10,6 @@
         android:icon="@drawable/ic_timer_black_24dp"/>
 
     <item
-        android:title="Supprimer mes informations"
-        android:id="@+id/btnSupprimer"
-        app:showAsAction="never"
-        android:icon="@drawable/ic_timer_black_24dp"/>
-
-    <item
         android:title="Shop"
         android:id="@+id/btnShop"
         app:showAsAction="never"
@@ -38,5 +32,11 @@
         android:title="search"
         app:showAsAction="always|collapseActionView"
         app:actionViewClass="android.support.v7.widget.SearchView"/>
+
+    <item
+        android:title="Supprimer mes informations"
+        android:id="@+id/btnSupprimer"
+        app:showAsAction="never"
+        android:icon="@drawable/ic_timer_black_24dp"/>
 
 </menu>

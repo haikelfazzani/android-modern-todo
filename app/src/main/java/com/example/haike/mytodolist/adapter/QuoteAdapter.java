@@ -7,22 +7,28 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.TextView;
 
 import com.example.haike.mytodolist.R;
 import com.example.haike.mytodolist.activity.QuotePreviewActivity;
 import com.example.haike.mytodolist.model.Quote;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class QuoteAdapter extends RecyclerView.Adapter<QuoteAdapter.MyViewHolder> {
+public class QuoteAdapter extends RecyclerView.Adapter<QuoteAdapter.MyViewHolder> implements Filterable {
 
     private Context context;
+
     private List<Quote> mDataset;
+    private List<Quote> fullDataset;
 
     public QuoteAdapter(Context context, List<Quote> myDataset) {
         this.context = context;
         mDataset = myDataset;
+        fullDataset = new ArrayList<>(myDataset);
     }
 
     @NonNull
@@ -53,6 +59,40 @@ public class QuoteAdapter extends RecyclerView.Adapter<QuoteAdapter.MyViewHolder
     public int getItemCount() {
         return mDataset.size();
     }
+
+    @Override
+    public Filter getFilter() {
+        return myFilterList;
+    }
+
+    private Filter myFilterList = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            List<Quote> filerList = new ArrayList<>();
+
+            if(constraint == null || constraint.length() == 0) {
+                filerList.addAll(fullDataset);
+            }
+            else {
+                String filterPattern = constraint.toString().toLowerCase().trim();
+                for(Quote quoteItem : fullDataset) {
+                    if(quoteItem.getAuthor().toLowerCase().contains(filterPattern)) {
+                        filerList.add(quoteItem);
+                    }
+                }
+            }
+            FilterResults results = new FilterResults();
+            results.values = filerList;
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            mDataset.clear();
+            mDataset.addAll((List<Quote>)results.values);
+            notifyDataSetChanged();
+        }
+    };
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 

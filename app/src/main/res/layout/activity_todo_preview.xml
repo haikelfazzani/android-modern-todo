@@ -70,7 +70,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="cursive"
-            android:text="Choisir une date * : "
+            android:text="La date * : "
             android:textStyle="bold" />
 
         <EditText
@@ -86,7 +86,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="cursive"
-            android:text="Choisir l'heure * : "
+            android:text="l'heure * : "
             android:textStyle="bold" />
 
         <EditText
