@@ -9,7 +9,6 @@
         android:id="@+id/txtTextQuote"
         android:layout_width="360dp"
         android:layout_height="wrap_content"
-        android:layout_alignStart="@+id/txtTitle"
         android:layout_alignParentTop="true"
         android:layout_marginTop="30dp"
         android:hint="New York Public Radio" />

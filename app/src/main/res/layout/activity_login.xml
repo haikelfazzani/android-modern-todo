@@ -4,9 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.TodoForm$ListTodoActivity"
-    android:paddingRight="50dp"
-    android:paddingLeft="50dp"
+    tools:context=".activity.LoginActivity"
     android:layout_gravity="center">
 
     <android.support.design.widget.AppBarLayout
@@ -29,6 +27,8 @@
         android:layout_gravity="center_vertical"
         android:orientation="vertical"
         android:layout_centerVertical="true"
+        android:paddingRight="50dp"
+        android:paddingLeft="50dp"
         >
 
         <ImageView
