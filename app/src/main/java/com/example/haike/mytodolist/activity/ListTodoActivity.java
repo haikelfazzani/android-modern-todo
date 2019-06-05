@@ -7,9 +7,11 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.inputmethod.EditorInfo;
 
 import com.example.haike.mytodolist.R;
 import com.example.haike.mytodolist.adapter.TodoAdapter;
@@ -21,6 +23,8 @@ import java.util.List;
 public class ListTodoActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
+    private TodoAdapter adapter;
+
     private DbHandler dbHandler;
 
     @Override
@@ -43,7 +47,7 @@ public class ListTodoActivity extends AppCompatActivity {
 
         // Recycle settings
         recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));
-        TodoAdapter adapter = new TodoAdapter(ListTodoActivity.this, todoList);
+        adapter = new TodoAdapter(ListTodoActivity.this, todoList);
         recyclerView.setAdapter(adapter);
 
 
@@ -52,6 +56,24 @@ public class ListTodoActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
+        MenuItem searchItem = menu.findItem(R.id.action_search);
+        SearchView searchView = (SearchView) searchItem.getActionView();
+
+        searchView.setImeOptions(EditorInfo.IME_ACTION_DONE);
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                adapter.getFilter().filter(s);
+                return false;
+            }
+        });
+
         return true;
     }
 

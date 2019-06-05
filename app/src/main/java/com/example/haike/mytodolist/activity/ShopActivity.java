@@ -5,7 +5,12 @@ import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.inputmethod.EditorInfo;
 import android.widget.ImageView;
 
 import com.example.haike.mytodolist.R;
@@ -23,6 +28,7 @@ import retrofit2.Response;
 public class ShopActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
+    private ShopAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +52,7 @@ public class ShopActivity extends AppCompatActivity {
 
                     recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));
                     List<Shop> shopList = response.body();
-                    ShopAdapter adapter = new ShopAdapter(ShopActivity.this, shopList);
+                    adapter = new ShopAdapter(ShopActivity.this, shopList);
 
                     recyclerView.setAdapter(adapter);
 
@@ -61,5 +67,37 @@ public class ShopActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_search_shop, menu);
+
+        MenuItem searchItem = menu.findItem(R.id.action_search);
+        SearchView searchView = (SearchView) searchItem.getActionView();
+
+        searchView.setImeOptions(EditorInfo.IME_ACTION_DONE);
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                adapter.getFilter().filter(s);
+                return false;
+            }
+        });
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        return super.onOptionsItemSelected(item);
     }
 }

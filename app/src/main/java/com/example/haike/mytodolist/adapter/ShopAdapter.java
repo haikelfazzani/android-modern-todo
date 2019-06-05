@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -14,16 +16,19 @@ import com.example.haike.mytodolist.R;
 import com.example.haike.mytodolist.model.Shop;
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class ShopAdapter extends RecyclerView.Adapter<ShopAdapter.MyViewHolder> {
+public class ShopAdapter extends RecyclerView.Adapter<ShopAdapter.MyViewHolder> implements Filterable {
 
     private Context context;
     private List<Shop> mDataset;
+    private List<Shop> fullDataset;
 
     public ShopAdapter(Context context, List<Shop> myDataset) {
         this.context = context;
         mDataset = myDataset;
+        fullDataset = new ArrayList<>(myDataset);
     }
 
     @NonNull
@@ -50,6 +55,42 @@ public class ShopAdapter extends RecyclerView.Adapter<ShopAdapter.MyViewHolder> 
         return mDataset.size();
     }
 
+    @Override
+    public Filter getFilter() {
+        return myFilterList;
+    }
+
+    private Filter myFilterList = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            List<Shop> filerList = new ArrayList<>();
+
+            if(constraint == null || constraint.length() == 0) {
+                filerList.addAll(fullDataset);
+            }
+            else {
+                String filterPattern = constraint.toString().toLowerCase().trim();
+                for(Shop shopItem : fullDataset) {
+                    if(shopItem.getText().toLowerCase().contains(filterPattern)) {
+                        filerList.add(shopItem);
+                    }
+                }
+            }
+            FilterResults results = new FilterResults();
+            results.values = filerList;
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            mDataset.clear();
+            mDataset.addAll((List<Shop>)results.values);
+            notifyDataSetChanged();
+        }
+    };
+
+
+    // View holder class
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
         private TextView txtShop, priceShop, descShop;

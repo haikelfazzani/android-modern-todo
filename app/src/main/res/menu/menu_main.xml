@@ -18,7 +18,7 @@
     <item
         android:title="Shop"
         android:id="@+id/btnShop"
-        app:showAsAction="always"
+        app:showAsAction="never"
         android:icon="@drawable/ic_shopping_cart_black_24dp"/>
 
     <item
@@ -32,5 +32,11 @@
         android:id="@+id/btnQuotess"
         app:showAsAction="always"
         android:icon="@drawable/ic_message_black_24dp"/>
+
+    <item android:icon="@drawable/ic_search_black_24dp"
+        android:id="@+id/action_search"
+        android:title="search"
+        app:showAsAction="always|collapseActionView"
+        app:actionViewClass="android.support.v7.widget.SearchView"/>
 
 </menu>

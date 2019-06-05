@@ -10,6 +10,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,17 +21,22 @@ import com.example.haike.mytodolist.activity.TodoPreviewActivity;
 import com.example.haike.mytodolist.config.DbHandler;
 import com.example.haike.mytodolist.model.Todo;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class TodoAdapter extends RecyclerView.Adapter<TodoAdapter.MyViewHolder> {
+public class TodoAdapter extends RecyclerView.Adapter<TodoAdapter.MyViewHolder> implements Filterable {
 
     private Context context;
+
     private List<Todo> mDataset;
+    private List<Todo> fullDataset;
+
     private DbHandler dbHandler;
 
     public TodoAdapter(Context context, List<Todo> myDataset) {
         this.context = context;
         mDataset = myDataset;
+        fullDataset = new ArrayList<>(myDataset);
         dbHandler = new DbHandler(context);
     }
 
@@ -92,6 +99,40 @@ public class TodoAdapter extends RecyclerView.Adapter<TodoAdapter.MyViewHolder> 
     public int getItemCount() {
         return mDataset.size();
     }
+
+    @Override
+    public Filter getFilter() {
+        return myFilterList;
+    }
+
+    private Filter myFilterList = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+            List<Todo> filerList = new ArrayList<>();
+
+            if(constraint == null || constraint.length() == 0) {
+                filerList.addAll(fullDataset);
+            }
+            else {
+                String filterPattern = constraint.toString().toLowerCase().trim();
+                for(Todo todoItem : fullDataset) {
+                    if(todoItem.getTitle().toLowerCase().contains(filterPattern)) {
+                        filerList.add(todoItem);
+                    }
+                }
+            }
+            FilterResults results = new FilterResults();
+            results.values = filerList;
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            mDataset.clear();
+            mDataset.addAll((List<Todo>)results.values);
+            notifyDataSetChanged();
+        }
+    };
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
 
