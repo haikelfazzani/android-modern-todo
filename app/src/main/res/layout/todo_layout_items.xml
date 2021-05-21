@@ -10,7 +10,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        >
 
         <Button
             android:id="@+id/btnDelete"
@@ -48,6 +49,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"></ImageView>
+
         <TextView
             android:id="@+id/todo_time"
             android:layout_width="138dp"
@@ -76,6 +81,5 @@
             android:textSize="14sp" />
 
     </RelativeLayout>
-
 
 </LinearLayout>

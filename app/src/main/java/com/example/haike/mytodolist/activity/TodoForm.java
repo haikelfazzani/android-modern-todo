@@ -71,7 +71,7 @@ public class TodoForm extends AppCompatActivity implements View.OnClickListener 
                 myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
 
                 String myFormat = "MM-dd-yyyy";
-                SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.FRANCE);
+                SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
                 txtDate.setText(formatDate(sdf.format(myCalendar.getTime())));
             }
 
@@ -84,7 +84,6 @@ public class TodoForm extends AppCompatActivity implements View.OnClickListener 
 
     @Override
     public void onClick(View v) {
-
         String myTxtTitre = txtTitre.getText().toString();
         String myTxtDesc = txtDesc.getText().toString();
         String myTxtDate = txtDate.getText().toString();

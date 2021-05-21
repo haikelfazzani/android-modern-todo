@@ -1,6 +1,5 @@
 package com.example.haike.mytodolist.activity;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
@@ -15,7 +14,7 @@ import android.widget.Toast;
 
 import com.example.haike.mytodolist.R;
 import com.example.haike.mytodolist.adapter.QuoteAdapter;
-import com.example.haike.mytodolist.api.QuoteApi;
+import com.example.haike.mytodolist.services.QuoteApi;
 import com.example.haike.mytodolist.model.Quote;
 
 import java.util.List;

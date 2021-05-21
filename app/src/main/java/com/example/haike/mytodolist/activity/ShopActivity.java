@@ -11,13 +11,11 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.inputmethod.EditorInfo;
-import android.widget.ImageView;
 
 import com.example.haike.mytodolist.R;
 import com.example.haike.mytodolist.adapter.ShopAdapter;
-import com.example.haike.mytodolist.api.ShopApi;
+import com.example.haike.mytodolist.services.ShopApi;
 import com.example.haike.mytodolist.model.Shop;
-import com.squareup.picasso.Picasso;
 
 import java.util.List;
 

@@ -1,11 +1,11 @@
-package com.example.haike.mytodolist.api;
+package com.example.haike.mytodolist.services;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class UserApi {
 
-    private static final String BASE_URL = "http://192.168.56.1:3020/users/";
+    private static final String BASE_URL = "https://instagr-server.herokuapp.com/users/";
     private static UserApi userApi;
     private Retrofit retrofit;
 

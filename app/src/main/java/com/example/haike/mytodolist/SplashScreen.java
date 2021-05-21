@@ -7,8 +7,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.haike.mytodolist.activity.SignActivity;
-import com.example.haike.mytodolist.activity.TodoForm;
-import com.example.haike.mytodolist.api.QuoteApi;
+import com.example.haike.mytodolist.services.QuoteApi;
 import com.example.haike.mytodolist.model.Quote;
 
 import retrofit2.Call;

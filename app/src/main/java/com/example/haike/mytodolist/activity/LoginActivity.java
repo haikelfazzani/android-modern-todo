@@ -12,7 +12,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.haike.mytodolist.R;
-import com.example.haike.mytodolist.api.UserApi;
+import com.example.haike.mytodolist.services.UserApi;
 import com.example.haike.mytodolist.model.User;
 
 import java.util.List;
