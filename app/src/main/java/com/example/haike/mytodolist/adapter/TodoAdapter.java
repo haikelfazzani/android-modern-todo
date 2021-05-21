@@ -49,6 +49,7 @@ public class TodoAdapter extends RecyclerView.Adapter<TodoAdapter.MyViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder myViewHolder, final int position) {
+        //int pos = myViewHolder.getAdapterPosition();
         final Todo todo = this.mDataset.get(position);
         myViewHolder.title.setText(todo.getTitle());
         myViewHolder.desc.setText(todo.getDesc());

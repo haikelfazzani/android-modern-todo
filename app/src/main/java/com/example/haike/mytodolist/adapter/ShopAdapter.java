@@ -44,7 +44,7 @@ public class ShopAdapter extends RecyclerView.Adapter<ShopAdapter.MyViewHolder> 
         final Shop shop = this.mDataset.get(position);
 
         myViewHolder.txtShop.setText(shop.getText());
-        myViewHolder.priceShop.setText(shop.getPrice()+"$");
+        myViewHolder.priceShop.setText(shop.getPrice()+"⭐");
         myViewHolder.descShop.setText(shop.getDesc());
 
         Picasso.get().load(shop.getImage()).into(myViewHolder.imageView);

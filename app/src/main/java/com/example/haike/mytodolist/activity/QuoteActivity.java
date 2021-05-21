@@ -48,9 +48,7 @@ public class QuoteActivity extends AppCompatActivity {
         call.enqueue(new Callback<List<Quote>>() {
             @Override
             public void onResponse(Call<List<Quote>> call, Response<List<Quote>> response) {
-
                 if(response.isSuccessful()) {
-
                     List<Quote> quoteList = response.body();
 
                     recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));

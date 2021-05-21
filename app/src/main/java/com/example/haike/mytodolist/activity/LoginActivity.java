@@ -75,7 +75,7 @@ public class LoginActivity extends AppCompatActivity {
 
                     @Override
                     public void onFailure(Call<List<User>> call, Throwable t) {
-                        Toast.makeText(LoginActivity.this, "Error login", Toast.LENGTH_SHORT)
+                        Toast.makeText(LoginActivity.this, "Account does not exist", Toast.LENGTH_SHORT)
                                 .show();
                     }
                 });

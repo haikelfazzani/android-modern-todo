@@ -9,10 +9,10 @@ import retrofit2.http.GET;
 
 public interface IQuoteApi {
 
-    @GET("quotes")
+    @GET("all")
     Call<List<Quote>> getQuotes();
 
-    @GET("quotes/rand")
+    @GET("rand")
     Call<Quote> getRandQuote();
 
 }

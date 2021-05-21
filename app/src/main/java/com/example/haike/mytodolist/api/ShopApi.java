@@ -5,7 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class ShopApi {
 
-    private static final String BASE_URL = "https://open-rest.herokuapp.com/api/";
+    private static final String BASE_URL = "http://192.168.56.1:3020/movies/";
     private static ShopApi shopApi;
     private Retrofit retrofit;
 

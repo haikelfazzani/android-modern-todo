@@ -13,17 +13,15 @@ import retrofit2.http.GET;
 import retrofit2.http.POST;
 
 public interface IUserApi {
-
-
     @FormUrlEncoded
-    @POST("user/login")
+    @POST("login")
     Call<List<User>> getUser(
             @Field("email") String email,
             @Field("password") String password
     );
 
     @FormUrlEncoded
-    @POST("user/create")
+    @POST("register")
     Call<ResponseBody> createUser(
             @Field("nom") String nom,
             @Field("prenom") String prenom,

@@ -5,7 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class UserApi {
 
-    private static final String BASE_URL = "https://android-server-doctor.herokuapp.com/api/";
+    private static final String BASE_URL = "http://192.168.56.1:3020/users/";
     private static UserApi userApi;
     private Retrofit retrofit;
 

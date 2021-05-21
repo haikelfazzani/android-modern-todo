@@ -7,6 +7,7 @@ import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -36,7 +37,6 @@ public class SignActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-
         SharedPreferences prefs = getSharedPreferences("user_email_p", Context.MODE_PRIVATE);
         String email = prefs.getString("email", "");
         String passs = prefs.getString("pass", "");
@@ -44,7 +44,6 @@ public class SignActivity extends AppCompatActivity {
         if(!email.isEmpty()) {
             gotToLoginActivity();
         }
-
         else {
             nomUser = findViewById(R.id.nom);
             preUser = findViewById(R.id.prenom);
@@ -56,7 +55,6 @@ public class SignActivity extends AppCompatActivity {
             btnSign.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
                     String nom = nomUser.getText().toString();
                     String prenom = preUser.getText().toString();
                     String email = emailUser.getText().toString();
@@ -66,18 +64,16 @@ public class SignActivity extends AppCompatActivity {
                     retrofit2.Call<ResponseBody> call = UserApi.getInstance()
                             .getApi().createUser(nom, prenom, email, password, ville);
 
-
                     call.enqueue(new Callback<ResponseBody>() {
-
                         @Override
                         public void onResponse(retrofit2.Call<ResponseBody> call, Response<ResponseBody> response) {
                             if(response.isSuccessful()) {
                                 try {
                                     String res = response.body().string();
-
                                     gotToLoginActivity();
-
                                 } catch (IOException e) {
+                                    Toast.makeText(SignActivity.this, "This email address is already being used" , Toast.LENGTH_SHORT)
+                                            .show();
                                     e.printStackTrace();
                                 }
                             }
@@ -85,7 +81,7 @@ public class SignActivity extends AppCompatActivity {
 
                         @Override
                         public void onFailure(retrofit2.Call<ResponseBody> call, Throwable t) {
-                            Toast.makeText(SignActivity.this, "Error response" , Toast.LENGTH_SHORT)
+                            Toast.makeText(SignActivity.this, "This email address is already being used" , Toast.LENGTH_SHORT)
                                     .show();
                         }
                     });

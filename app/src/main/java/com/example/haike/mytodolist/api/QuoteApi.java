@@ -5,7 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class QuoteApi {
 
-        private static final String BASE_URL = "https://open-rest.herokuapp.com/api/";
+        private static final String BASE_URL = "http://192.168.56.1:3020/quote/";
         private static QuoteApi quoteApi;
         private Retrofit retrofit;
 
